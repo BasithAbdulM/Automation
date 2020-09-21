@@ -3,18 +3,24 @@ import org.openqa.selenium.WebDriver;
 
 public class Login {
     private WebDriver driver;
-
-    private By txtUserName=By.id("txtUsername");
-    private By txtPassword=By.id("txtPassword");
-    private By txtLogin=By.id("btnLogin");
+    private By Sign=By.cssSelector("span.login-form.login-modal");
+    private By UserName=By.cssSelector("input.username");
+    private By cont=By.xpath("//input[@type='submit']");
+    private By Password=By.name("password");
+    private By Login=By.cssSelector("input.login-form-inputs.login-btn");
     public Login(WebDriver driver){
         this.driver=driver;
     }
 
     public void Login(String userName,String password){
-        driver.findElement(txtUserName).sendKeys(userName);
-        driver.findElement(txtPassword).sendKeys(password);
-        driver.findElement(txtLogin).click();
+        driver.findElement(Sign).click();
+        driver.findElement(UserName).sendKeys(userName);
+        driver.findElement(cont).click();
+        driver.findElement(Password).sendKeys(password);
+        driver.findElement(Login).click();
+    }
+    public void Searchproduct(String product){
+
     }
 
 
