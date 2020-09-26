@@ -4,9 +4,10 @@ import org.openqa.selenium.WebDriver;
 public class Search {
     public WebDriver driver;
     private By Searchbox=By.xpath("//input[@autocomplete='off']");
-    private By searchbtn=By.cssSelector("input.login-form-inputs.login-btn");
+    private By searchbtn=By.className("ic-search");
 
     public Search(WebDriver driver) {
+
         this.driver=driver;
     }
 
