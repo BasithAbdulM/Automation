@@ -1,5 +1,7 @@
 
+import com.google.gson.JsonObject;
 import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
@@ -23,8 +26,14 @@ public class Driver {
         switch (browser.toLowerCase()) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "src//main//resources//chromedriver.exe");
-                //disabled popup
+
                 ChromeOptions options = new ChromeOptions();
+                options.addArguments("--disable-geolocation");
+
+//                JSONObject jsonObject = new JSONObject();
+//                jsonObject.put("profile.default_content_settings.geolocation",2);
+//                options.setExperimentalOption("prefs", jsonObject);
+                //disabled popup
                 options.setExperimentalOption("useAutomationExtension", false);
                 driver = new ChromeDriver(options);//launch browser
                 break;
@@ -41,6 +50,7 @@ public class Driver {
         }
         driver.manage().window().maximize();//maximize window
         driver.navigate().to(url);//navigate to url
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
     }
 

@@ -4,7 +4,7 @@
     <test verbose="2" preserve-order="true" name="TestDemo">
         <classes>
             <class name="LoginExecution"/>
-
+            <parameter name="productnames" value="Footwear"></parameter>
 
         </classes>
     </test>
