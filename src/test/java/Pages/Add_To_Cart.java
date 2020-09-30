@@ -23,8 +23,9 @@ public class Add_To_Cart {
                 ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(newTab.get(1));
         driver.findElement(selectsize).click();
-
         driver.findElement(addtomybag).click();
+        driver.close();
+        driver.switchTo().window(newTab.get(0));
     }
 
 }

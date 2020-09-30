@@ -25,10 +25,12 @@ public class Driver {
 
         switch (browser.toLowerCase()) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "src//main//resources//chromedriver.exe");
 
+
+                System.setProperty("webdriver.chrome.driver", "src//main//resources//chromedriver.exe");
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--disable-geolocation");
+
 
 //                JSONObject jsonObject = new JSONObject();
 //                jsonObject.put("profile.default_content_settings.geolocation",2);

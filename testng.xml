@@ -3,8 +3,12 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="TestDemo">
         <classes>
-            <class name="LoginExecution"/>
+            <class name="HomeExecution"/>
+
+
             <parameter name="productnames" value="Footwear"></parameter>
+
+
 
         </classes>
     </test>
