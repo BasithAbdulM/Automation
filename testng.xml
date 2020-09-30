@@ -6,7 +6,9 @@
             <class name="HomeExecution"/>
 
 
-            <parameter name="productnames" value="Footwear"></parameter>
+            <parameter name="productnames" value="Footwear">
+
+            </parameter>
 
 
 

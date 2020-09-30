@@ -31,7 +31,7 @@ public class OrderTotal {
         String delivery = driver.findElement(prddelivery).getText();
         System.out.println("prddelivery:" + delivery);
         String savings = driver.findElement(couponsvngs).getText();
-        System.out.println("couponsavings:" + delivery);
+        System.out.println("couponsavings:" + savings);
         String ordrtotal = driver.findElement(Ordertotal).getText();
         System.out.println("Order Total:" + ordrtotal);
 

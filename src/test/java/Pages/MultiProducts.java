@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class MultiProducts  {
@@ -36,6 +37,7 @@ public class MultiProducts  {
         driver.switchTo().window(newTab.get(1));
         driver.findElement(size1).click();
         driver.findElement(cart1).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.switchTo().window(newTab.get(0));
 
         driver.findElement(prd2).click();
@@ -44,6 +46,7 @@ public class MultiProducts  {
         driver.switchTo().window(newTab2.get(2));
         driver.findElement(size2).click();
         driver.findElement(cart2).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.switchTo().window(newTab.get(0));
 
         driver.findElement(prd3).click();
@@ -52,6 +55,7 @@ public class MultiProducts  {
         driver.switchTo().window(newTab3.get(3));
         driver.findElement(size3).click();
         driver.findElement(cart3).click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.switchTo().window(newTab.get(0));
 
     }

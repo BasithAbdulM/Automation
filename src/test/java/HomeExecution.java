@@ -216,6 +216,26 @@ public class HomeExecution {
         reports.flush();
     }
 
+    @Test(priority=9)
+    public void changetest() throws IOException {
+
+        String path = System.getProperty("user.dir");
+        reports = new ExtentReports();
+        extentSparkReporter = new ExtentSparkReporter(path + "\\report\\report.html");
+        reports.setSystemInfo("Machine Name", InetAddress.getLocalHost().getHostName());
+
+        reports.attachReporter(extentSparkReporter);
+        extentTest = reports.createTest("Deleted from bag");
+
+        Changes changes = new Changes(driver);
+        changes.changes();
+
+        extentTest.log(Status.PASS, "product removed");
+        extentTest.addScreenCaptureFromPath(Driver.takeScreenshot());
+        Driver.closeBrowser();
+        reports.flush();
+    }
+
 
 }
 
