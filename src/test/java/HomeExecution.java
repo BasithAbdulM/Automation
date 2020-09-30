@@ -13,14 +13,14 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class HomeExecution {
-  public static   WebDriver driver = Driver.openBrowser("chrome", "https://www.ajio.com/");
+  public static   WebDriver driver = Driver.openBrowser("chrome", "https://www.ajio.com/shop/sale");
 
 
     ExtentReports reports;
     ExtentSparkReporter extentSparkReporter;
     ExtentTest extentTest;
 
-    @Test
+    @Test(priority = 1)
     public void HomeTest() throws InterruptedException, IOException {
 
         String path = System.getProperty("user.dir");
@@ -39,9 +39,9 @@ public class HomeExecution {
         extentTest.addScreenCaptureFromPath(Driver.takeScreenshot());
         Driver.closeBrowser();
         reports.flush();
-    }
+ }
 
-    @Test(priority = 1)
+    @Test(priority = 2)
     @Parameters("productnames")
     public void Searchtest(String productName) throws IOException {
 
@@ -61,13 +61,13 @@ public class HomeExecution {
 
         extentTest.addScreenCaptureFromPath(Driver.takeScreenshot());
         Driver.closeBrowser();
-        reports.flush();
+//        reports.flush();
 
 
 
     }
 
-    @Test(priority = 2)
+    @Test(priority = 3)
     public void Verifycartoption() throws IOException {
 
         String path = System.getProperty("user.dir");
@@ -89,7 +89,7 @@ public class HomeExecution {
         reports.flush();
     }
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void Addmultiproduct() throws IOException {
 
         String path = System.getProperty("user.dir");
@@ -109,7 +109,7 @@ public class HomeExecution {
         reports.flush();
 
     }
-    @Test(priority = 4)
+    @Test(priority = 6)
     public void MyBagTest() throws IOException {
 
         String path = System.getProperty("user.dir");
@@ -118,7 +118,7 @@ public class HomeExecution {
         reports.setSystemInfo("Machine Name", InetAddress.getLocalHost().getHostName());
 
         reports.attachReporter(extentSparkReporter);
-        extentTest = reports.createTest("Addmultiproduct");
+        extentTest = reports.createTest("MyBagTest");
 
         MyBag myBag = new MyBag(driver);
         myBag.MyBag();
@@ -138,7 +138,7 @@ public class HomeExecution {
         reports.setSystemInfo("Machine Name", InetAddress.getLocalHost().getHostName());
 
         reports.attachReporter(extentSparkReporter);
-        extentTest = reports.createTest("Addmultiproduct");
+        extentTest = reports.createTest("ordrsummaryTest");
 
         Order_Summ orderSumm= new Order_Summ(driver);
         orderSumm.Order_Summ();
@@ -150,7 +150,53 @@ public class HomeExecution {
 
     }
 
-    @Test(priority=6)
+    @Test(priority = 7)
+    public void ordrsTotalTest() throws IOException {
+
+        String path = System.getProperty("user.dir");
+        reports = new ExtentReports();
+        extentSparkReporter = new ExtentSparkReporter(path + "\\report\\report.html");
+        reports.setSystemInfo("Machine Name", InetAddress.getLocalHost().getHostName());
+
+        reports.attachReporter(extentSparkReporter);
+        extentTest = reports.createTest("ordrsTotalTest");
+
+
+        OrderTotal orderTotal=new OrderTotal(driver);
+        orderTotal.OrderTotal();
+
+        extentTest.log(Status.PASS, "Total equals");
+        extentTest.addScreenCaptureFromPath(Driver.takeScreenshot());
+        Driver.closeBrowser();
+        reports.flush();
+
+    }
+
+    @Test(priority =8 )
+    public void SavingsTest() throws IOException {
+
+        String path = System.getProperty("user.dir");
+        reports = new ExtentReports();
+        extentSparkReporter = new ExtentSparkReporter(path + "\\report\\report.html");
+        reports.setSystemInfo("Machine Name", InetAddress.getLocalHost().getHostName());
+
+        reports.attachReporter(extentSparkReporter);
+        extentTest = reports.createTest("ordrsTotalTest");
+
+
+        Savings savings=new Savings(driver);
+        savings.savings();
+
+        extentTest.log(Status.PASS, "Total equals");
+        extentTest.addScreenCaptureFromPath(Driver.takeScreenshot());
+        Driver.closeBrowser();
+        reports.flush();
+
+    }
+
+
+
+    @Test(priority=5)
     public void Deletefrombag() throws IOException {
 
         String path = System.getProperty("user.dir");
@@ -159,7 +205,7 @@ public class HomeExecution {
         reports.setSystemInfo("Machine Name", InetAddress.getLocalHost().getHostName());
 
         reports.attachReporter(extentSparkReporter);
-        extentTest = reports.createTest("Deletefrombag");
+        extentTest = reports.createTest("Deleted from bag");
 
         DeleteFromCart deleteFromCart = new DeleteFromCart(driver);
         deleteFromCart.deletefromcart();
